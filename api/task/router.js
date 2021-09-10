@@ -1,3 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const Tasks = require("./model");
+
+router.get("/", (req, res, next) => {
+  Tasks.getTasks()
+    .then((tasks) => {
+      res.json(tasks);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 module.exports = router;
