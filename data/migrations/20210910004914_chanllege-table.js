@@ -16,7 +16,6 @@ exports.up = async function (knex) {
       table.string("task_description", 1024).notNullable();
       table.string("task_notes");
       table.boolean("task_completed");
-
       table
         .integer("project_id")
         .unsigned()
@@ -47,7 +46,6 @@ exports.up = async function (knex) {
 };
 
 exports.down = async function (knex) {
-  // SO FREAKIN' EASY TO GET WRONG
   await knex.schema
     .dropTableIfExists("tasks")
     .dropTableIfExists("project_resources")

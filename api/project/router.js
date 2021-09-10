@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Projects = require("./model");
+
 router.get("/", (req, res, next) => {
   Projects.getProjects()
     .then((projects) => {
