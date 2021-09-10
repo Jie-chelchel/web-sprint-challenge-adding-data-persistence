@@ -11,6 +11,14 @@ const getTasks = async () => {
   return tasks;
 };
 
+const createTask = async (task) => {
+  const [newTaskId] = await db("tasks").insert(task);
+  const newTask = await db("tasks").where({ task_id: newTaskId }).first();
+  newTask.task_completed = !newTask.task_completed ? false : true;
+  return newTask;
+};
+
 module.exports = {
   getTasks,
+  createTask,
 };

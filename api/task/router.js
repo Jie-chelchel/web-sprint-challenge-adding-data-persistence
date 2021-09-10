@@ -12,4 +12,14 @@ router.get("/", (req, res, next) => {
     });
 });
 
+router.post("/", (req, res, next) => {
+  Tasks.createTask(req.body)
+    .then((task) => {
+      res.json(task);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 module.exports = router;
