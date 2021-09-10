@@ -69,20 +69,25 @@ Build the migration(s) in Knex inside the `data/migrations` folder using appropr
 Build an API inside the `api` folder with endpoints for:
 
 - [ ] `[POST] /api/resources`
+
   - Example of response body: `{"resource_id":1,"resource_name":"foo","resource_description":null}`
 
 - [ ] `[GET] /api/resources`
+
   - Example of response body: `[{"resource_id":1,"resource_name":"foo","resource_description":null}]`
 
 - [ ] `[POST] /api/projects`
+
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}`
 
 - [ ] `[GET] /api/projects`
+
   - Even though `project_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `[{"project_id":1,"project_name":"bar","project_description":null,"project_completed":false}]`
 
 - [ ] `[POST] /api/tasks`
+
   - Even though `task_completed` is stored as an integer, the API uses booleans when interacting with the client
   - Example of response body: `{"task_id":1,"task_description":"baz","task_notes":null,"task_completed":false,"project_id:1}`
 
@@ -110,6 +115,15 @@ Build an API inside the `api` folder with endpoints for:
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Explain the difference between Relational Databases and SQL.
+   A relational database organizes data into tables which are related to each other. It allows you
+   to retrieve an entirely new table from data in one or more tables with a single query.
+   SQL is a standard language. We use it to query Relational Databases.
+   s
 2. Why do tables need a Primary Key?
+   A primary keys will provide a unique value to identify the individual rows in your tables. Since each row is uniquely identified, you can relate that table to a different table by storing the primary key in a column of the related table. In the related table, we will refer it as a foreign key. An example would be a table of sales orders, and a related table of the individual items that are part of the order. The sales order primary key would be stored in each record of the related line items that make up the order, so that you could link the order record to all the items in that order.
+
 3. What is the name given to a table column that references the Primary Key on another table?
+   Foreign key
+
 4. What do we need in order to have a _many to many_ relationship between two tables?
+   we need an intermediary table that holds foreign keys that reference the primary key on the related tables.
