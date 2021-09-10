@@ -5,5 +5,14 @@ const getResources = async () => {
 
   return resources;
 };
+const createResource = async (resource) => {
+  const [newResourceID] = await db("resources").insert(resource);
+  const newResource = await db("resources")
+    .where({
+      resource_id: newResourceID,
+    })
+    .first();
+  return newResource;
+};
 
-module.exports = { getResources };
+module.exports = { getResources, createResource };
